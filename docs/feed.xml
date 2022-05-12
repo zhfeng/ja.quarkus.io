@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+
+    <channel>
+        <title>Quarkus</title>
+        <link>https://quarkus.io</link>
+        <description>Quarkus: Supersonic Subatomic Java</description>
+        <lastBuildDate>Thu, 12 May 2022 12:33:14 +0000</lastBuildDate>
+        
+        <item>
+            <title>Quarkus 2.9.0.Final リリース - WebAuthnエクステンション、Reactive RoutesおよびRESTEasy Reactiveの圧縮サポート、その他多数...</title>
+            <link>
+                https://quarkus.io/blog/quarkus-2-9-0-final-released/
+            </link>
+            <description>
+                新機能を満載したQuarkus 2.9をリリースしました: WebAuthn エクステンション Reactive RoutesとRESTEasy Reactiveにおける圧縮サポート Confluent Schema Registryのサポート バックチャンネルログアウトに対応 KotlinとScalaのアップグレード 他多数&#8230;&#8203; 移行ガイド 2.8から移行する場合は、 移行ガイド をご参照ください。 変更点 WebAuthn エクステンション WebAuthn は、パスワードを置き換えるために設計された認証メカニズムです。つまり、新しいユーザーを登録したり、ログインしたりするサービスを書くたびに、パスワードを要求する代わりに、WebAuthn を使って、パスワードを置き換えるのです。 WebAuthnは、パスワードをIDの証明に置き換えます。実際には、ユーザーは、パスワードを考案したり、保存したり、記憶したりする代わりに、あなたのサービスやウェブサイトのために特別に身元証明を生成するハードウェアトークンを使用することになります。これは、ユーザーに携帯電話で親指を押してもらったり、パソコンで YubiKey のボタンを押したりすることで実現可能です。 新しい quarkus-security-webauthn エクステンションのおかげで、QuarkusアプリケーションにWebAuthn認証を実装することができます。 その詳細は、 個別のガイド に記載されています。 OpenID Connect プロバイダー GitHub、Google、Microsoft、Appleなどの有名なOIDCプロバイダーは、最新のアプリケーションでユーザーを認証するために非常に広く使用されています。 それらを設定するのは大変なことで、それぞれがOIDCをどのように実装したかを正しく理解するためには、それぞれに作業が必要です。 そのため、Quarkusには、多くの有名なプロバイダーの設定があらかじめ用意されており、 豊富なドキュメント で設定方法を説明します。 現在、カバーされているプロバイダーは以下の通りです: GitHub Google Microsoft Apple Facebook Twitter Spotify 今後更に追加します。また、コントリビューションは大歓迎です。 Reactive...
+            </description>
+            <pubDate>Wed, 11 May 2022 00:00:00 +0000</pubDate>
+            <guid>
+                https://quarkus.io/blog/quarkus-2-9-0-final-released/
+            </guid>
+            
+            
+            
+            <author>Guillaume Smet (https://twitter.com/gsmet_)</author>
+            
+        </item>
+        
+        <item>
+            <title>Quarkus 2.8.3.Finalリリース - メンテナンスリリース</title>
+            <link>
+                https://quarkus.io/blog/quarkus-2-8-3-final-released/
+            </link>
+            <description>
+                
+Quarkus 2.8.3.Finalをリリースしました。これは、2.8リリーストレインの3つ目で、おそらく最後のメンテナンスリリースです。2.9.0.Finalは来週リリースされる予定です。
+
+
+これは、すでに2.8をお使いの方にとって安全なアップグレードです。
+
+
+まだ2.8をお使いでない方は、 2.8移行ガイドをご参照ください。
+
+
+完全な変更履歴
+
+
+GitHubで2.8.3.Finalの全変更履歴 をご覧いただけます。
+
+
+
+
+参加のお誘い
+
+
+私達は皆様からのフィードバックに重きを置いています。バグ報告、改善要望を是非お願いします。一緒に素晴らしいものを作り上げていきましょう!
+
+
+Quarkusユーザーの場合でも、単に興味を持っているだけの場合でも、恥ずかしがらずにコミュニティに参加して下さい!:
+
+
+
+
+GitHub でフィードバック
+
+
+コードを作成し、 プルリクエスト を送信
+
+
+Zulip や メーリングリスト でディスカッションに参加
+
+
+Stack Overflow で質問
+
+
+
+
+
+            </description>
+            <pubDate>Fri, 06 May 2022 00:00:00 +0000</pubDate>
+            <guid>
+                https://quarkus.io/blog/quarkus-2-8-3-final-released/
+            </guid>
+            
+            
+            
+            <author>Guillaume Smet (https://twitter.com/gsmet_)</author>
+            
+        </item>
+        
+        <item>
+            <title>CryostatでQuarkusのJVMモードを監視</title>
+            <link>
+                https://quarkus.io/blog/monitoring-quarkus-jvm-mode-with-cryostat/
+            </link>
+            <description>
+                Cryostatは、HotSpot JVM 上で動作する Java アプリケーションに既に存在する JDK Flight Recorder(JFR) フレームワークを活用したプロファイリングおよび監視ツールです。Cryostatは、クラスタ内の収集ハブを提供し、クラスタ外からJDK Flight Recorderデータに簡単かつ安全にアクセスすることができます。Cryostatは、主にOpenShiftへのデプロイをターゲットとするクラウドネイティブアプリケーションです。したがって、このガイドでは、わかりやすくするために、QuarkusアプリケーションもOpenShiftにデプロイしているものと仮定します。 この記事では、CryostatがQuarkusと通信し、JDK Flight Recorderの収集、保存、および分析ツールを提供できるように、Quarkusアプリケーションを設定する方法について説明します。 Figure 1. クライオスタット自動分析レポート Figure 2. Cryostat Grafana Dashboard Quarkusを使用したCryostatの注意点 Quarkusは、標準のJVMモード（ビルドにより.JARファイルを生成し、ランタイムにJVMでロードして実行）またはネイティブモード（ビルドにより、直接実行するネイティブバイナリを生成）でビルドできることは有名な話です。CryostatはJDK Flight Recorder（JFR）に依存していますが、これはQuarkusのネイティブモードでは部分的にしかサポートされておらず、JDK Management Extensions（JMX）は執筆時点ではネイティブモードではサポートされていません。つまり、残念ながら、JVMモードのQuarkusアプリケーションしかCryostatで使用するように設定することができません。 Cryostat入門 OpenShiftでCryostatを始めるには、OperatorHubからインストールするだけで、素早く簡単にできます。 Figure 3. Cryostatインストール 次に、Cryostat CR リソースインスタンスを作成し、Operator に Cryostat インスタンスをデプロイすることを知らせます。この段階で、いくつかの設定オプションを選択することもできますが、ここではデフォルトを前提とします。 Figure 4. Cryostat作成 Cryostat通信 CryostatはJMXを使用して、HotSpot JVM上で動作するアプリケーション（JavaおよびScalaアプリケーションを含むが、これに限定されない）と対話します。JMXは、ツールがアプリケーションに接続してアクションを実行したり、さまざまな基礎となるトランスポートプロトコルを介してデータを取得したりできるようにする標準のJavaテクノロジーです。QuarkusアプリケーションをJVMモードで構築してデプロイする場合、JMXサポートはすでに組み込まれており、すぐに使用できます。アプリケーションでJMXを有効にするには、2つの方法があります。 方法1：実行時に有効化 JMXは、JVMのシステムプロパティを設定することで有効にすることができます。 -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=${RJMX_PORT} -Dcom.sun.management.jmxremote.rmi.port=${RJMX_PORT}...
+            </description>
+            <pubDate>Wed, 27 Apr 2022 00:00:00 +0000</pubDate>
+            <guid>
+                https://quarkus.io/blog/monitoring-quarkus-jvm-mode-with-cryostat/
+            </guid>
+            
+            
+            
+            <author>Andrew Azores</author>
+            
+        </item>
+        
+        <item>
+            <title>Quarkus 2.8.2.Finalリリース - メンテナンスリリース</title>
+            <link>
+                https://quarkus.io/blog/quarkus-2-8-2-final-released/
+            </link>
+            <description>
+                
+本日、2.8.2.Finalをリリースしましたが、例によってバグフィックスとドキュメントの改善のみが含まれています。
+
+
+これは、すでに2.8をお使いの方にとって安全なアップグレードです。
+
+
+まだ2.8をお使いでない方は、 2.8移行ガイドをご参照ください。
+
+
+完全な変更履歴
+
+
+GitHubで2.8.2.Finalの全変更履歴をご覧いただけます。
+
+
+
+
+参加のお誘い
+
+
+私達は皆様からのフィードバックに重きを置いています。バグ報告、改善要望を是非お願いします。一緒に素晴らしいものを作り上げていきましょう!
+
+
+Quarkusユーザーの場合でも、単に興味を持っているだけの場合でも、恥ずかしがらずにコミュニティに参加して下さい!:
+
+
+
+
+GitHub でフィードバック
+
+
+コードを作成し、 プルリクエスト を送信
+
+
+Zulip や メーリングリスト でディスカッションに参加
+
+
+Stack Overflow で質問
+
+
+
+
+
+            </description>
+            <pubDate>Tue, 26 Apr 2022 00:00:00 +0000</pubDate>
+            <guid>
+                https://quarkus.io/blog/quarkus-2-8-2-final-released/
+            </guid>
+            
+            
+            
+            <author>Guillaume Smet (https://twitter.com/gsmet_)</author>
+            
+        </item>
+        
+        <item>
+            <title>Quarkusのエクステンションで問題を解く (1/n)</title>
+            <link>
+                https://quarkus.io/blog/solving-problems-with-extensions/
+            </link>
+            <description>
+                この記事は、Quarkus独自のビルドインフラとエクステンションフレームワークを活用して複雑な問題を解決する方法を紹介する、数回にわたる連載の最初の記事です。 まず最初に、Quarkusエクステンションのブートストラップは簡単です。1つのコマンドで、雛形ができ、実際の実装に取り掛かることができます。しかし、それはこの記事の主題ではありません! エクステンションは、アプリケーションにランタイムコードを提供するだけでなく、アプリケーションのビルドを調整し、ビルドレベルであらゆる種類のことを行うことができます。このシリーズでは、この点に焦点を当てます。 今日の問題: バイナリ互換性を確保するために、Hub4j GitHub APIは、Mockito、特にByteBuddyを混乱させ、最終的に我々のテストの信頼性を低下させるいくつかのブリッジ・メソッドを導入しています。どうすればそれを解決できるでしょうか？ いくつかのコンテキスト 私のQuarkus GitHub Appエクステンションは、QuarkusをベースにしたGitHubアプリを、ほとんど定型文を使わずに軽快に開発できます（恥知らずな宣伝：素晴らしいです！）。 私の親愛なる同僚である Yoann Rodière（彼も素晴らしい！）は、 Mockito（これはフードの下で ByteBuddyを使用します）に基づいて、そのためのテストインフラをいくつか書きました。しかし、すべて順調だったのは、Mockitoが実際に期待するメソッドを呼び出さないことがあり、テストが混乱したり、再現性のない失敗をしたりすることに気づくまででした。 問題の原因は、バイナリ互換性を確保するために、Quarkus GitHub Appで使用している Hub4j GitHub APIでは、バイトコードにブリッジメソッドを導入していることです。 たとえば、GitHub API の GitHub クラスのこのメソッドを例に挙げてみましょう。 @WithBridgeMethods(value = GHUser.class) public GHMyself getMyself() throws IOException { client.requireCredential(); return setMyself(); } 歴史的に見ると、以前は GHUser を返していたが、新しいバージョンでは GHMyself を返すようになり、バイナリ互換性が壊れました。 これを復元するために、 @WithBridgeMethods アノテーションの助けを借りて、GitHub API ビルドはバイトコードに...
+            </description>
+            <pubDate>Wed, 20 Apr 2022 00:00:00 +0000</pubDate>
+            <guid>
+                https://quarkus.io/blog/solving-problems-with-extensions/
+            </guid>
+            
+            
+            
+            <author>Guillaume Smet (https://twitter.com/gsmet_)</author>
+            
+        </item>
+        
+        <item>
+            <title>Quarkus 2.8.1.Finalリリース - メンテナンスリリース</title>
+            <link>
+                https://quarkus.io/blog/quarkus-2-8-1-final-released/
+            </link>
+            <description>
+                
+本日、2.8.1.Finalをリリースしましたが、例によってバグフィックスとドキュメントの改善のみが含まれています。
+
+
+これは、すでに2.8をお使いの方にとって安全なアップグレードです。
+
+
+まだ2.8をお使いでない方は、 2.8移行ガイドをご参照ください。
+
+
+完全な変更履歴
+
+
+GitHubで2.8.1.Finalの全変更履歴をご覧いただけます。
+
+
+
+
+参加のお誘い
+
+
+私達は皆様からのフィードバックに重きを置いています。バグ報告、改善要望を是非お願いします。一緒に素晴らしいものを作り上げていきましょう!
+
+
+Quarkusユーザーの場合でも、単に興味を持っているだけの場合でも、恥ずかしがらずにコミュニティに参加して下さい!:
+
+
+
+
+GitHub でフィードバック
+
+
+コードを作成し、 プルリクエスト を送信
+
+
+Zulip や メーリングリスト でディスカッションに参加
+
+
+Stack Overflow で質問
+
+
+
+
+
+            </description>
+            <pubDate>Tue, 19 Apr 2022 00:00:00 +0000</pubDate>
+            <guid>
+                https://quarkus.io/blog/quarkus-2-8-1-final-released/
+            </guid>
+            
+            
+            
+            <author>Guillaume Smet (https://twitter.com/gsmet_)</author>
+            
+        </item>
+        
+        <item>
+            <title>Quarkus Newsletter #19 - April</title>
+            <link>
+                https://quarkus.io/blog/quarkus-newsletter-19/
+            </link>
+            <description>
+                4月号のニュースレターが公開されました。Jason Greene、John Clingan、Eric Deandreaによる「Kubernetes Native Java with Quarkus」など、素晴らしい新記事満載です。その他、「Develop and Deploy Cloud Native Java Applications at Supersonic speed」「Build a REST API from the ground up with Quarkus 2.0」「Building Databases on Kubernetes with Quarkus」「Insight on Vaadin with Quarkus」「Quarkus Tools for Visual Studio Code - 1.10.0 release」「Qute Templating Engine Support - now available...
+            </description>
+            <pubDate>Thu, 14 Apr 2022 00:00:00 +0000</pubDate>
+            <guid>
+                https://quarkus.io/blog/quarkus-newsletter-19/
+            </guid>
+            
+            
+            
+            <author>James Cobb (https://twitter.com/insectengine)</author>
+            
+        </item>
+        
+        <item>
+            <title>Quarkus 2.8.0.Final リリース - 新しいRESTレイヤーのデフォルト化、GraalVM 22.0、その他多数!</title>
+            <link>
+                https://quarkus.io/blog/quarkus-2-8-0-final-released/
+            </link>
+            <description>
+                2.8.0.Finalでは、多くの改良と新機能が搭載されています。 AssertjをBOMの外に移動 新しいRESTレイヤーのデフォルト化 GraalVM 22.0 OIDC Proof Of Key for Code Exchange (PKCE)のサポート QuarkusTransaction API Elasticsearch Dev Services 他多数! 移行ガイド 2.7からの移行は、 移行ガイドを参照してください。 変更点 BOMからAssertjを除外 大事なことをまず最初に: プロジェクトでAssertjを使用している場合、私たちはBOMからこれを移動させました。バイナリの互換性がしばしば壊れ、一部のプロジェクトにとって困難な状況になるためです。 そこで、今後は、プロジェクトでバージョンを定義するようにしてください。最新バージョンは3.22.0です。 さあ、もっとエキサイティングな話をしましょう! 新しいRESTレイヤーのデフォルト化 ずいぶん前になりますが、QuarkusにRESTEasy Reactiveという新しいRESTレイヤーを導入しました。この新しいREST実装は、Quarkusを念頭に置いて設計されており、これまでデフォルトでプッシュしていた従来のRESTEasyスタックよりも優れた改善を提供しています。 理解すべき重要なことの1つは、その名前にもかかわらず、RESTEasy Reactiveは従来のブロック型ワークロードとリアクティブ型ワークロードの両方を等しくサポートしているということです。そして、ほとんどの場合、それは完全に透過的であり、考える必要さえありません。エンドポイントに応じて、RESTEasy Reactiveは適合するパラダイムを選択します。 例えば MyEntity を返すと、エンドポイントは自動的にブロッキング化されます。 Uni&lt;MyEntity&gt; を返すと、リアクティブになる また、RESTEasy Classicはどこにも行きません。RESTEasy Classicを使用して新しいプロジェクトを作成することは可能ですが、デフォルトではインポートされません。 すべてのガイドがRESTEasy Reactiveを推進しており、ネーミングを統一する必要があります。従来のRESTEasyはRESTEasy Classic、新しいレイヤーはRESTEasy Reactiveとします。 また、RESTEasy ReactiveベースのKeycloak Admin ClientエクステンションやHibernate...
+            </description>
+            <pubDate>Tue, 12 Apr 2022 00:00:00 +0000</pubDate>
+            <guid>
+                https://quarkus.io/blog/quarkus-2-8-0-final-released/
+            </guid>
+            
+            
+            
+            <author>Guillaume Smet (https://twitter.com/gsmet_)</author>
+            
+        </item>
+        
+        <item>
+            <title>Camel Quarkusに乗る：容易なAPI</title>
+            <link>
+                https://quarkus.io/blog/camel-quarkus-effortless-apis/
+            </link>
+            <description>
+                Quarkusに導入されたインテグレーションのスイス・アーミーナイフ、Camelを発見してください。この例では、データ変換用のAtlasMapを紹介する簡単なコーディング作業で、APIのベストプラクティスを奨励しています。 はじめに Quarkusには、Web、データ、メッセージングシステムに接続するためのエクステンションが豊富に用意されており、開発者が自由に使える素晴らしい機能が提供されています。しかし、多くの場合、手元の問題はすでによく知られた エンタープライズ統合パターンの1つ（または複数）に属しています。 開発者は、Apache Camelがインテグレーションパターンに対応する最善の方法を完成させていることを知らずにプロジェクトを開始しがちです。Camel Quarkusは、データ形式、トランスフォーマー、テンプレート化、カスタムプロセッサーなど、 数百のコネクター とデータ仲介のための豊富な機能を提供します。 Camel Quarkusは、 Apache Camelコミュニティのサブプロジェクトで、 Quarkus上でCamelを実行できるようにするものです。Apache Camelは、しばしばインテグレーションのスイス・アーミーナイフと呼ばれ、インテグレーションに関するあらゆることを解決することを目的とした、最も人気のあるオープンソースコミュニティプロジェクトです。 OpenAPIの例 他の開発アプローチと対比して、Camel Quarkusを使用する利点を強調する役に立つ例を選んでみましょう。APIサービスの実装と進化は、ほとんどすべての読者が共感できるユースケースのように聞こえます。ここでは、広く採用されているOpenApiの仕様を使用します。 Figure 1. OpenAPIサービスを組み立てる もちろん、この記事の例では、ソースシステムへのアクセスやインテグレーションを可能にし、何らかのデータ処理を行い、バックエンドポイントにデータを接続して送信するという、インテグレーションの文脈で説明されています。 By all means, Camel Quarkus is not a “one to rule them all” solution. It will not be a good fit if your scenario deviates from the above...
+            </description>
+            <pubDate>Tue, 05 Apr 2022 00:00:00 +0000</pubDate>
+            <guid>
+                https://quarkus.io/blog/camel-quarkus-effortless-apis/
+            </guid>
+            
+            
+            
+            <author>Bruno Meseguer</author>
+            
+        </item>
+        
+        <item>
+            <title>Qute Templating Engineのサポート - Quarkus Tools for Visual Studio Codeで提供開始</title>
+            <link>
+                https://quarkus.io/blog/vscode-quarkus-1.10.0-qute/
+            </link>
+            <description>
+                Quarkus Tools for Visual Studio Codeのバージョン1.10.0が VS Code Marketplace と Open VSXでリリースされました。 Quarkus Tools for Visual Studio Code - 1.10.0リリース に関するブログポストをまだご覧になっていない方は、この待望のリリースで導入された素晴らしい機能をご覧ください。 1.10.0リリースで追加された主な新機能の1つは、Quarkus固有の テンプレートエンジンであるQute の言語サポートの導入です。これらの新機能により、Quarkusの開発者は、Quarkus Javaプロジェクトに加えた変更を可視化できます。 src/main/resources/templates にあるすべてのファイルとサブディレクトリの変更と修正が監視され、すぐに可視化されるようになりました。 Quarkus Tools for Visual Studio Code拡張機能をインストールしたVisual Studio Codeで開く任意のQuarkusプロジェクトでは、 src/main/resources/templates 以下のすべての .html 、 .txt 、 .yaml 、 .json ファイルにQuteサポートと構文の強調表示が提供されます。さらに、上記の拡張ファイルの前に追加されたすべての .qute. （すなわち、 *.qute.html ）も、Qute サポート機能の恩恵を受けることができます。現在のファイルがサポートされているかどうかを確認するには、「...
+            </description>
+            <pubDate>Mon, 04 Apr 2022 00:00:00 +0000</pubDate>
+            <guid>
+                https://quarkus.io/blog/vscode-quarkus-1.10.0-qute/
+            </guid>
+            
+            
+            
+            <author>Alexander Chen</author>
+            
+        </item>
+        
+    </channel>
+</rss>
